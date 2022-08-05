@@ -12,3 +12,8 @@ output "network_id" {
   value       = module.vpc-network.network.id
   description = "The ID of the VPC being created"
 }
+
+output "subnets_ids" {
+  value       = [for network in module.vpc-subnet.subnets : network.id]
+  description = "The IDs of the subnets being created"
+}
