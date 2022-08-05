@@ -17,3 +17,15 @@ variable "labels" {
   description = "An optional labels of this resource."
   default     = {}
 }
+
+variable "subnets" {
+  description = "The list of subnets being created"
+  type = list(object({
+    name           = string
+    zone           = string
+    description    = string
+    v4_cidr_blocks = list(string)
+    route_table_id = string
+    labels         = map(string)
+  }))
+}
